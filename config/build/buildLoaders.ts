@@ -29,7 +29,36 @@ export function buildLoaders({isDev}: BuildOptions): webpack.RuleSetRule[] {
         ]
     }
 
+    const svgLoader = {
+        test: /\.svg$/,
+        use: ['@svgr/webpack'],
+    }
+
+    const fileLoader = {
+        test: /\.(pmg|jpe?g|gif|woof2|woof)$/i,
+        use: [
+            {
+                loader: 'file-loader'
+            }
+        ]
+    }
+
+    const babelLoader = {
+        test: /\.(js|jsx|tsx)$/,
+        exclude: /node_modules/,
+        use: {
+            loader: "babel-loader",
+            options: {
+                presets: ['@babel/preset-env']
+            }
+        }
+
+    }
+
     return [
+        fileLoader,
+        svgLoader,
+        babelLoader,
         typescriptLoader,
         cssLoader
     ]
