@@ -1,10 +1,8 @@
-import { Decorator } from '@storybook/react';
 import { Suspense } from 'react';
+import { Story } from '@storybook/react';
 
-const SuspenseDecorator = (): Decorator => (Story) => (
+export const SuspenseDecorator = (story: () => Story) => (
     <Suspense fallback="">
-        <Story />
+        {story()}
     </Suspense>
 );
-
-export default SuspenseDecorator;

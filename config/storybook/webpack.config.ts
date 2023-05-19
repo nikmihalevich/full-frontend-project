@@ -1,17 +1,17 @@
+// @ts-ignore
 import webpack, { RuleSetRule } from 'webpack';
+// @ts-ignore
 import path from 'path';
-import { BuildPaths } from '../build/types/config';
 import { buildCssLoader } from '../build/loaders/buildCssLoader';
-import { buildSvgLoader } from '../build/loaders/buildSvgLoader';
+import { BuildPaths } from '../build/types/config';
 
 export default ({ config }: {config: webpack.Configuration}) => {
     const paths: BuildPaths = {
-        src: path.resolve(__dirname, '..', '..', 'src'),
         build: '',
-        entry: '',
         html: '',
+        entry: '',
+        src: path.resolve(__dirname, '..', '..', 'src'),
     };
-
     config.resolve.modules.push(paths.src);
     config.resolve.extensions.push('.ts', '.tsx');
 
@@ -24,8 +24,10 @@ export default ({ config }: {config: webpack.Configuration}) => {
         return rule;
     });
 
-    config.module.rules.push(buildSvgLoader());
-
+    config.module.rules.push({
+        test: /\.svg$/,
+        use: ['@svgr/webpack'],
+    });
     config.module.rules.push(buildCssLoader(true));
 
     return config;
