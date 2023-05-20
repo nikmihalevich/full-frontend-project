@@ -4,8 +4,8 @@ import { ThemeSwitcher } from 'widgets/ThemeSwitcher';
 import { LangSwitcher } from 'widgets/LangSwitcher';
 import { Button } from 'shared/ui/Button/Button';
 import { BugButton } from 'shared/ui/BugButton/BugButton';
+import { useTranslation } from 'react-i18next';
 import cls from './Sidebar.module.scss';
-import {useTranslation} from "react-i18next";
 
 interface SidebarProps {
   className?: string
@@ -13,7 +13,7 @@ interface SidebarProps {
 
 export const Sidebar = ({ className }: SidebarProps) => {
     const [collapsed, setCollapsed] = useState(false);
-    const { t } = useTranslation( )
+    const { t } = useTranslation();
 
     const onToggle = () => {
         setCollapsed((prev) => !prev);
