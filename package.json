@@ -12,8 +12,9 @@
     "lint:scss": "npx stylelint \"**/*.scss\"",
     "lint:scss:fix": "npx stylelint \"**/*.scss\" --fix",
     "test:unit": "jest --config ./config/jest/jest.config.ts",
-    "test:ui": "loki test --port 6006 --reactUri file:./storybook-static",
-    "test:ui:ci": "loki --requireReference --reactUri file:./storybook-static",
+    "test:ui": "loki test --port 6006 --reactUri file:./storybook-static --chromeDockerImage yukinying/chrome-headless-browser-stable:latest",
+    "test:ui:mac": "loki test --chromeDockerImage yukinying/chrome-headless-browser-stable:100.0.4896.127",
+    "test:ui:ci": "loki --requireReference --reactUri file:./storybook-static --chromeDockerImage yukinying/chrome-headless-browser-stable:latest",
     "storybook": "start-storybook -p 6006 -c ./config/storybook",
     "storybook:build": "build-storybook -c ./config/storybook"
   },
