@@ -66,5 +66,11 @@ module.exports = {
                 'max-len': 'off',
             },
         },
+        {
+            files: ['src/**/*Slice.ts'],
+            rules: {
+                'no-param-reassign': ['error', { props: false }],
+            },
+        },
     ],
 };
