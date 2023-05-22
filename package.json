@@ -16,7 +16,7 @@
     "test:ui:mac": "loki test --chromeDockerImage yukinying/chrome-headless-browser-stable:100.0.4896.127",
     "test:ui:upd:mac": "loki update --chromeDockerImage yukinying/chrome-headless-browser-stable:100.0.4896.127",
     "test:ui:ok": "loki approve",
-    "test:ui:ci": "loki --requireReference --reactUri file:./storybook-static --chromeDockerImage yukinying/chrome-headless-browser-stable:100.0.4896.127",
+    "test:ui:ci": "loki --requireReference --reactUri file:./storybook-static",
     "test:ui:json": "node scripts/generate-visual-json-report.js",
     "test:ui:html": "reg-cli --from .loki/report.json --report .loki/report.html",
     "test:ui:report": "npm run test:ui:json && npm run test:ui:html",
