@@ -9,6 +9,10 @@
   "Обновить страницу": "Reload page",
   "Ошибка!": "Throw Error!",
   "Переключить!": "Toggle",
-  "Введите username": "Введите username",
-  "Введите пароль": "Введите пароль"
+  "Введите username": "Enter username",
+  "Введите пароль": "Enter пароль",
+  "Форма авторизации": "Auth form",
+  "Войти": "Login",
+  "Выйти": "Logout",
+  "Вы ввели неверный логин или пароль": "Incorrect login or password"
 }
