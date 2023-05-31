@@ -14,5 +14,6 @@
   "Форма авторизации": "Auth form",
   "Войти": "Login",
   "Выйти": "Logout",
-  "Вы ввели неверный логин или пароль": "Incorrect login or password"
+  "Вы ввели неверный логин или пароль": "Incorrect login or password",
+  "Профиль": "Profile Page"
 }
