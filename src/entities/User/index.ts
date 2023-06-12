@@ -1,4 +1,5 @@
 export { getUserAuthData } from 'entities/User/model/selectors/getUserAuthData/getUserAuthData';
+export { getUserMounted } from 'entities/User/model/selectors/getUserMounted/getUserMounted';
 
 export {
     userReducer,
