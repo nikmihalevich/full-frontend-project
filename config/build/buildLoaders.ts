@@ -11,7 +11,7 @@ export function buildLoaders(options: BuildOptions): webpack.RuleSetRule[] {
         exclude: /node_modules/,
     };
 
-    const cssLoader = buildCssLoader(options);
+    const cssLoader = buildCssLoader(options.isDev);
 
     const svgLoader = buildSvgLoader();
 
