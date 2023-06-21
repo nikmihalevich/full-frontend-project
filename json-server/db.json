@@ -29,7 +29,9 @@
       "img": "https://teknotower.com/wp-content/uploads/2020/11/js.png",
       "views": 1022,
       "createdAt": "26.02.2022",
-      "type": ["IT"],
+      "type": [
+        "IT"
+      ],
       "blocks": [
         {
           "id": "1",
@@ -110,6 +112,24 @@
       "text": "some comment 3",
       "articleId": "2",
       "userId": "1"
+    },
+    {
+      "articleId": "1",
+      "userId": "1",
+      "text": "test comment 1",
+      "id": "mjufFKP"
+    },
+    {
+      "articleId": "1",
+      "userId": "2",
+      "text": "test comment 2",
+      "id": "Ens3TWe"
+    },
+    {
+      "articleId": "1",
+      "userId": "2",
+      "text": "hello world",
+      "id": "L0SoTXs"
     }
   ],
   "users": [
@@ -128,14 +148,28 @@
       "avatar": "https://blogs.vmware.com/security/files/2020/05/haking_is_the_new_espionage-410x222.jpg"
     }
   ],
-  "profile": {
-    "firstname": "John",
-    "lastname": "Doe",
-    "age": 23,
-    "currency": "RUB",
-    "country": "Belarus",
-    "city": "Saint-Petersburg",
-    "username": "admin",
-    "avatar": "https://blogs.vmware.com/security/files/2020/05/haking_is_the_new_espionage-410x222.jpg"
-  }
+  "profile": [
+    {
+      "id": "1",
+      "firstname": "John",
+      "lastname": "Doe",
+      "age": 23,
+      "currency": "RUB",
+      "country": "Russia",
+      "city": "Saint-Petersburg",
+      "username": "admin",
+      "avatar": "https://media.wired.com/photos/644318b17b25a434b1f3bbd7/1:1/w_1350,h_1350,c_limit/security_hacker_names.jpg"
+    },
+    {
+      "id": "2",
+      "firstname": "John 1",
+      "lastname": "Doe 2",
+      "age": 23,
+      "currency": "RUB",
+      "country": "Russia",
+      "city": "Moscow",
+      "username": "user 1",
+      "avatar": "https://blogs.vmware.com/security/files/2020/05/haking_is_the_new_espionage-410x222.jpg"
+    }
+  ]
 }
