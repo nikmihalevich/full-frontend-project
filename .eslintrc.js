@@ -55,6 +55,7 @@ module.exports = {
         'react-hooks/rules-of-hooks': 'error',
         'react-hooks/exhaustive-deps': 'error',
         'no-undef': 'off',
+        'react/no-array-index-key': 'off',
     },
     globals: {
         __IS_DEV__: true,
