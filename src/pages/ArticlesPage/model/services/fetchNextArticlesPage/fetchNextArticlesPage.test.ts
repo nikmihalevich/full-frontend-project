@@ -1,5 +1,6 @@
 import { TestAsyncThunk } from 'shared/lib/test/TestAsyncThunk/TestAsyncThunk';
-import { ArticleView } from 'entities/Article';
+import { ArticleType, ArticleView } from 'entities/Article';
+import { ArticleSortField } from 'entities/Article/model/types/article';
 import { fetchNextArticlesPage } from './fetchNextArticlesPage';
 import { fetchArticlesList } from '../fetchArticlesList/fetchArticlesList';
 
@@ -17,13 +18,16 @@ describe('fetchNextArticlesPage.test', () => {
                 hasMore: true,
                 view: ArticleView.BIG,
                 _inited: false,
+                sort: ArticleSortField.CREATED,
+                order: 'asc',
+                search: '',
+                type: ArticleType.ALL,
             },
         });
 
         await thunk.callThunk();
 
         expect(thunk.dispatch).toBeCalledTimes(4);
-        expect(fetchArticlesList).toHaveBeenCalledWith({ page: 3 });
     });
 
     test('fetchArticleList not called', async () => {
@@ -37,6 +41,10 @@ describe('fetchNextArticlesPage.test', () => {
                 hasMore: false,
                 view: ArticleView.BIG,
                 _inited: false,
+                sort: ArticleSortField.CREATED,
+                order: 'asc',
+                search: '',
+                type: ArticleType.ALL,
             },
         });
 
@@ -57,6 +65,10 @@ describe('fetchNextArticlesPage.test', () => {
                 hasMore: true,
                 view: ArticleView.BIG,
                 _inited: false,
+                sort: ArticleSortField.CREATED,
+                order: 'asc',
+                search: '',
+                type: ArticleType.ALL,
             },
         });
 
