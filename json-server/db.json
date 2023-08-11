@@ -595,6 +595,18 @@
       "userId": "1",
       "text": "python!!!",
       "id": "p5rMadd"
+    },
+    {
+      "articleId": "16",
+      "userId": "1",
+      "text": "privet!",
+      "id": "JV66Hkn"
+    },
+    {
+      "articleId": "10",
+      "userId": "1",
+      "text": "kek!",
+      "id": "qjv3dvb"
     }
   ],
   "users": [
@@ -619,11 +631,12 @@
       "first": "jghwer",
       "lastname": "asfewr",
       "age": 465,
-      "currency": "RUB",
+      "currency": "USD",
       "country": "Belarus",
       "city": "Moscow",
       "username": "admin213",
-      "avatar": "https://t4.ftcdn.net/jpg/05/50/95/87/360_F_550958748_OeGcRonEUNoVhd0wjd9zSEMhLFIGO9Bt.jpg"
+      "avatar": "https://t4.ftcdn.net/jpg/05/50/95/87/360_F_550958748_OeGcRonEUNoVhd0wjd9zSEMhLFIGO9Bt.jpg",
+      "firstname": "NIk)"
     },
     {
       "id": "2",
