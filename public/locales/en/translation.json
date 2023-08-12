@@ -35,5 +35,7 @@
   "Комментарии отсутствуют": "No comments",
   "Создать статью": "Create article",
   "Укажите страну": "Select country",
-  "Укажите валюту": "Select currency"
+  "Укажите валюту": "Select currency",
+  "У вас нет доступа к этой странице": "You dont have access to this page",
+  "Админ панель": "Admin panel"
 }
