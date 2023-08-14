@@ -18,7 +18,7 @@ export const NotificationList = memo((props: NotificationListProps) => {
         pollingInterval: 5000,
     });
 
-    if (true) {
+    if (isLoading) {
         return (
             <VStack
                 gap="16"
