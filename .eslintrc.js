@@ -70,7 +70,13 @@ module.exports = {
         'react/no-array-index-key': 'off',
         'arrow-body-style': 'off',
         'nikmihalevich-plugin/path-checker': ['error', { alias: '@' }],
-        'nikmihalevich-plugin/public-api-imports': ['error', { alias: '@' }],
+        'nikmihalevich-plugin/public-api-imports': [
+            'error',
+            {
+                alias: '@',
+                testFilesPatterns: ['**/*.test.*', '**/*.stories.*', '**/StoreDecorator.tsx'],
+            },
+        ],
     },
     globals: {
         __IS_DEV__: true,
