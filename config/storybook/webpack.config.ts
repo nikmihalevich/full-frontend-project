@@ -13,7 +13,7 @@ export default ({ config }: {config: webpack.Configuration}) => {
         buildLocales: '',
     };
     // eslint-disable-next-line no-param-reassign
-    config!.resolve!.alias = { '@': paths.src };
+    config!.resolve!.alias = { ...config!.resolve!.alias, '@': paths.src };
     config!.resolve!.modules!.unshift(paths.src);
     config!.resolve!.extensions!.push('.ts', '.tsx');
 
