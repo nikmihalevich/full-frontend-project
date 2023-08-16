@@ -1,8 +1,11 @@
 import React from 'react';
+
 import { ComponentStory, ComponentMeta } from '@storybook/react';
+
 import { ThemeDecorator } from '@/shared/config/storybook/ThemeDecorator/ThemeDecorator';
-import { InputWithCarriage } from './InputWithCarriage';
 import { Theme } from '@/shared/const/theme';
+
+import { InputWithCarriage } from './InputWithCarriage';
 
 export default {
     title: 'shared/InputWithCarriage',

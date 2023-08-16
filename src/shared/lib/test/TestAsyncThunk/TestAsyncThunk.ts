@@ -1,6 +1,8 @@
 import { AsyncThunkAction, DeepPartial } from '@reduxjs/toolkit';
 import axios, { AxiosStatic } from 'axios';
+
 import { StateSchema } from '@/app/providers/StoreProvider';
+
 import mock = jest.mock;
 
 type ActionCreatorType<Return, Arg, RejectedValue>
