@@ -23,6 +23,7 @@ module.exports = {
         'i18next',
         'react-hooks',
         'nikmihalevich-plugin',
+        'unused-imports',
     ],
     rules: {
         'react/jsx-indent': [2, 4],
