@@ -70,6 +70,13 @@ module.exports = {
         'react/no-array-index-key': 'off',
         'arrow-body-style': 'off',
         'nikmihalevich-plugin/path-checker': ['error', { alias: '@' }],
+        'nikmihalevich-plugin/layer-imports': [
+            'error',
+            {
+                alias: '@',
+                ignoreImportPatterns: ['**/StoreProvider', '**/testing'],
+            },
+        ],
         'nikmihalevich-plugin/public-api-imports': [
             'error',
             {

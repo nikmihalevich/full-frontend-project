@@ -1,4 +1,4 @@
-import ErrorBoundary from '@/app/providers/ErrorBoundary/ui/ErrorBoundary';
+import ErrorBoundary from './ui/ErrorBoundary';
 
 export {
     ErrorBoundary,
