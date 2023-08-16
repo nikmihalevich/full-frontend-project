@@ -7,11 +7,11 @@ import {
     ArticleType, ArticleTypeTabs,
 } from '@/entities/Article';
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch';
-import { Card } from '@/shared/ui/Card/Card';
-import { InputWithCarriage } from '@/shared/ui/InputWithCarriage/InputWithCarriage';
+import { Card } from '@/shared/ui/Card';
+import { InputWithCarriage } from '@/shared/ui/InputWithCarriage';
 import { SortOrder } from '@/shared/types';
 import { useDebounce } from '@/shared/lib/hooks/useDebounce/useDebounce';
-import { TabItem, Tabs } from '@/shared/ui/Tabs/Tabs';
+import { TabItem, Tabs } from '@/shared/ui/Tabs';
 import { fetchArticlesList } from '../../model/services/fetchArticlesList/fetchArticlesList';
 import { articlesPageActions } from '../../model/slices/ArticlesPageSlice';
 import {
