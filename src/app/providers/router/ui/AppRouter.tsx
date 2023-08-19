@@ -8,7 +8,7 @@ import { PageLoader } from '@/widgets/PageLoader';
 import { RequireAuth } from './RequireAuth';
 import { routeConfig } from '../config/routeConfig';
 
-const AppRouter = () => {
+export const AppRouter = () => {
     const renderWithWrapper = useCallback((route: AppRoutesProps) => {
         const element = (
             <Suspense fallback={<PageLoader />}>
