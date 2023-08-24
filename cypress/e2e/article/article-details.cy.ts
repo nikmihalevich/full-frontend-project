@@ -34,4 +34,14 @@ describe('User entry on article page', () => {
         cy.setRate(rate, 'feedback');
         cy.get('[data-selected="true"]').should('have.length', rate);
     });
+
+    it('And rate article (with stubs on fixtures)', () => {
+        cy.intercept('GET', '**/articles/*', { fixture: 'article-details.json' });
+
+        const rate: number = 5;
+        cy.getByTestId('ArticleDetails.Info');
+        cy.getByTestId('RatingCard').scrollIntoView();
+        cy.setRate(rate, 'feedback');
+        cy.get('[data-selected="true"]').should('have.length', rate);
+    });
 });
