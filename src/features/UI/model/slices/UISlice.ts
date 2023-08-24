@@ -3,17 +3,20 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { UISchema } from '../types/UISchema';
 
 const initialState: UISchema = {
-    scroll: {},
+	scroll: {},
 };
 
 export const UISlice = createSlice({
-    name: 'ui',
-    initialState,
-    reducers: {
-        setScrollPosition: (state, { payload } : PayloadAction<{ path: string; position: number }>) => {
-            state.scroll[payload.path] = payload.position;
-        },
-    },
+	name: 'ui',
+	initialState,
+	reducers: {
+		setScrollPosition: (
+			state,
+			{ payload }: PayloadAction<{ path: string; position: number }>,
+		) => {
+			state.scroll[payload.path] = payload.position;
+		},
+	},
 });
 
 export const { actions: UIActions } = UISlice;

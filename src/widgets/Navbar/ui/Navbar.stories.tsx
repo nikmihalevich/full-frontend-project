@@ -9,11 +9,11 @@ import { Theme } from '@/shared/const/theme';
 import { Navbar } from './Navbar';
 
 export default {
-    title: 'widgets/Navbar',
-    component: Navbar,
-    argTypes: {
-        backgroundColor: { control: 'color' },
-    },
+	title: 'widgets/Navbar',
+	component: Navbar,
+	argTypes: {
+		backgroundColor: { control: 'color' },
+	},
 } as ComponentMeta<typeof Navbar>;
 
 const Template: ComponentStory<typeof Navbar> = (args) => <Navbar {...args} />;
@@ -28,6 +28,8 @@ Dark.decorators = [ThemeDecorator(Theme.DARK), StoreDecorator({})];
 
 export const AuthNavbar = Template.bind({});
 AuthNavbar.args = {};
-AuthNavbar.decorators = [StoreDecorator({
-    user: { authData: {} },
-})];
+AuthNavbar.decorators = [
+	StoreDecorator({
+		user: { authData: {} },
+	}),
+];

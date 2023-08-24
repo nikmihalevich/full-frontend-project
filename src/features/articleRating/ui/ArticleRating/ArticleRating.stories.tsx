@@ -7,59 +7,61 @@ import { StoreDecorator } from '@/shared/config/storybook/StoreDecorator/StoreDe
 import ArticleRating from './ArticleRating';
 
 export default {
-    title: 'features/ArticleRating',
-    component: ArticleRating,
-    argTypes: {
-        backgroundColor: { control: 'color' },
-    },
+	title: 'features/ArticleRating',
+	component: ArticleRating,
+	argTypes: {
+		backgroundColor: { control: 'color' },
+	},
 } as ComponentMeta<typeof ArticleRating>;
 
-const Template: ComponentStory<typeof ArticleRating> = (args) => <ArticleRating {...args} />;
+const Template: ComponentStory<typeof ArticleRating> = (args) => (
+	<ArticleRating {...args} />
+);
 
 export const Normal = Template.bind({});
 Normal.args = {
-    articleId: '1',
+	articleId: '1',
 };
 Normal.decorators = [
-    StoreDecorator({
-        user: {
-            authData: { id: '1', username: 'user' },
-        },
-    }),
+	StoreDecorator({
+		user: {
+			authData: { id: '1', username: 'user' },
+		},
+	}),
 ];
 Normal.parameters = {
-    mockData: [
-        {
-            url: `${__API__}/article-ratings?userId=1&articleId=1`,
-            method: 'GET',
-            status: 200,
-            response: [
-                {
-                    rate: 4,
-                },
-            ],
-        },
-    ],
+	mockData: [
+		{
+			url: `${__API__}/article-ratings?userId=1&articleId=1`,
+			method: 'GET',
+			status: 200,
+			response: [
+				{
+					rate: 4,
+				},
+			],
+		},
+	],
 };
 
 export const WithoutRating = Template.bind({});
 WithoutRating.args = {
-    articleId: '1',
+	articleId: '1',
 };
 WithoutRating.decorators = [
-    StoreDecorator({
-        user: {
-            authData: { id: '1', username: 'user' },
-        },
-    }),
+	StoreDecorator({
+		user: {
+			authData: { id: '1', username: 'user' },
+		},
+	}),
 ];
 WithoutRating.parameters = {
-    mockData: [
-        {
-            url: `${__API__}/article-ratings?userId=1&articleId=1`,
-            method: 'GET',
-            status: 200,
-            response: [],
-        },
-    ],
+	mockData: [
+		{
+			url: `${__API__}/article-ratings?userId=1&articleId=1`,
+			method: 'GET',
+			status: 200,
+			response: [],
+		},
+	],
 };

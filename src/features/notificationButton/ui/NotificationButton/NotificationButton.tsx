@@ -12,47 +12,43 @@ import { Popover } from '@/shared/ui/Popups';
 import cls from './NotificationButton.module.scss';
 
 interface NotificationButtonProps {
-    className?: string;
+	className?: string;
 }
 
 export const NotificationButton = memo((props: NotificationButtonProps) => {
-    const { className } = props;
-    const isMobile = useDevice();
+	const { className } = props;
+	const isMobile = useDevice();
 
-    const [isOpen, setIsOpen] = useState(false);
+	const [isOpen, setIsOpen] = useState(false);
 
-    const onOpenDrawer = useCallback(() => {
-        setIsOpen(true);
-    }, []);
+	const onOpenDrawer = useCallback(() => {
+		setIsOpen(true);
+	}, []);
 
-    const onCloseDrawer = useCallback(() => {
-        setIsOpen(false);
-    }, []);
+	const onCloseDrawer = useCallback(() => {
+		setIsOpen(false);
+	}, []);
 
-    const trigger = (
-        <Button theme={ButtonTheme.CLEAR} onClick={onOpenDrawer}>
-            <Icon Svg={NotificationIcon} inverted />
-        </Button>
-    );
+	const trigger = (
+		<Button theme={ButtonTheme.CLEAR} onClick={onOpenDrawer}>
+			<Icon Svg={NotificationIcon} inverted />
+		</Button>
+	);
 
-    return (
-        isMobile
-            ? (
-                <>
-                    {trigger}
-                    <Drawer isOpen={isOpen} onClose={onCloseDrawer}>
-                        <NotificationList />
-                    </Drawer>
-                </>
-            )
-            : (
-                <Popover
-                    className={classNames(cls.NotificationButton, {}, [className])}
-                    direction="bottom left"
-                    trigger={trigger}
-                >
-                    <NotificationList className={cls.notifications} />
-                </Popover>
-            )
-    );
+	return isMobile ? (
+		<>
+			{trigger}
+			<Drawer isOpen={isOpen} onClose={onCloseDrawer}>
+				<NotificationList />
+			</Drawer>
+		</>
+	) : (
+		<Popover
+			className={classNames(cls.NotificationButton, {}, [className])}
+			direction="bottom left"
+			trigger={trigger}
+		>
+			<NotificationList className={cls.notifications} />
+		</Popover>
+	);
 });

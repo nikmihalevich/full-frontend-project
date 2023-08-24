@@ -10,24 +10,24 @@ import { Sidebar } from '@/widgets/Sidebar';
 import { AppRouter } from './providers/router';
 
 const App = () => {
-    const dispatch = useDispatch();
-    const mounted = useSelector(getUserMounted);
+	const dispatch = useDispatch();
+	const mounted = useSelector(getUserMounted);
 
-    useEffect(() => {
-        dispatch(userActions.initAuthData());
-    }, [dispatch]);
+	useEffect(() => {
+		dispatch(userActions.initAuthData());
+	}, [dispatch]);
 
-    return (
-        <div className={classNames('app', {}, [])}>
-            <Suspense fallback="">
-                <Navbar />
-                <div className="content-page">
-                    <Sidebar />
-                    {mounted && <AppRouter />}
-                </div>
-            </Suspense>
-        </div>
-    );
+	return (
+		<div className={classNames('app', {}, [])}>
+			<Suspense fallback="">
+				<Navbar />
+				<div className="content-page">
+					<Sidebar />
+					{mounted && <AppRouter />}
+				</div>
+			</Suspense>
+		</div>
+	);
 };
 
 export default App;

@@ -17,60 +17,57 @@ import { Text, TextTheme } from '@/shared/ui/Text';
 import cls from './Navbar.module.scss';
 
 interface NavbarProps {
-  className?: string
+	className?: string;
 }
 
 export const Navbar = memo(({ className }: NavbarProps) => {
-    const { t } = useTranslation();
-    const [isAuthModal, setIsAuthModal] = useState(false);
-    const authData = useSelector(getUserAuthData);
+	const { t } = useTranslation();
+	const [isAuthModal, setIsAuthModal] = useState(false);
+	const authData = useSelector(getUserAuthData);
 
-    const onOpenModal = useCallback(() => {
-        setIsAuthModal(true);
-    }, []);
+	const onOpenModal = useCallback(() => {
+		setIsAuthModal(true);
+	}, []);
 
-    const onCloseModal = useCallback(() => {
-        setIsAuthModal(false);
-    }, []);
+	const onCloseModal = useCallback(() => {
+		setIsAuthModal(false);
+	}, []);
 
-    if (authData) {
-        return (
-            <header className={classNames(cls.Navbar, {}, [className])}>
-                <Text
-                    className={cls.appName}
-                    title={t('nixxx163 App')}
-                    theme={TextTheme.INVERTED}
-                />
-                <AppLink
-                    theme={AppLinkTheme.SECONDARY}
-                    to={getRouteArticleCreate()}
-                    className={cls.createBtn}
-                >
-                    {t('Создать статью')}
-                </AppLink>
-                <HStack gap="16" className={cls.actions}>
-                    <NotificationButton />
-                    <AvatarDropdown />
-                </HStack>
-            </header>
-        );
-    }
+	if (authData) {
+		return (
+			<header className={classNames(cls.Navbar, {}, [className])}>
+				<Text
+					className={cls.appName}
+					title={t('nixxx163 App')}
+					theme={TextTheme.INVERTED}
+				/>
+				<AppLink
+					theme={AppLinkTheme.SECONDARY}
+					to={getRouteArticleCreate()}
+					className={cls.createBtn}
+				>
+					{t('Создать статью')}
+				</AppLink>
+				<HStack gap="16" className={cls.actions}>
+					<NotificationButton />
+					<AvatarDropdown />
+				</HStack>
+			</header>
+		);
+	}
 
-    return (
-        <header className={classNames(cls.Navbar, {}, [className])}>
-            <Button
-                theme={ButtonTheme.CLEAR_INVERTED}
-                className={cls.links}
-                onClick={onOpenModal}
-            >
-                {t('Войти')}
-            </Button>
-            {isAuthModal && (
-                <LoginModal
-                    isOpen={isAuthModal}
-                    onClose={onCloseModal}
-                />
-            )}
-        </header>
-    );
+	return (
+		<header className={classNames(cls.Navbar, {}, [className])}>
+			<Button
+				theme={ButtonTheme.CLEAR_INVERTED}
+				className={cls.links}
+				onClick={onOpenModal}
+			>
+				{t('Войти')}
+			</Button>
+			{isAuthModal && (
+				<LoginModal isOpen={isAuthModal} onClose={onCloseModal} />
+			)}
+		</header>
+	);
 });

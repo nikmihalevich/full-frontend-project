@@ -13,19 +13,21 @@ import '@/app/styles/index.scss';
 const container = document.getElementById('root');
 
 if (!container) {
-    throw new Error('Контейнер root не найден. Не удалось вмонтировать React-приложение.');
+	throw new Error(
+		'Контейнер root не найден. Не удалось вмонтировать React-приложение.',
+	);
 }
 
 const root = createRoot(container);
 root.render(
-    <BrowserRouter>
-        <StoreProvider>
-            <ErrorBoundary>
-                <ThemeProvider>
-                    <App />
-                </ThemeProvider>
-            </ErrorBoundary>
-        </StoreProvider>
-    </BrowserRouter>,
+	<BrowserRouter>
+		<StoreProvider>
+			<ErrorBoundary>
+				<ThemeProvider>
+					<App />
+				</ThemeProvider>
+			</ErrorBoundary>
+		</StoreProvider>
+	</BrowserRouter>,
 );
 export { Theme } from '@/shared/const/theme';
