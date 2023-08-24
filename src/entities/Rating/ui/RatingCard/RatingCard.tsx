@@ -66,12 +66,13 @@ export const RatingCard = memo((props: RatingCardProps) => {
                 value={feedback}
                 onChange={setFeedback}
                 placeholder={t('Ваш отзыв')}
+                data-testid="RatingCard.Input"
             />
         </>
     );
 
     return (
-        <Card className={className} max>
+        <Card className={className} max data-testid="RatingCard">
             <VStack gap="8" align="center">
                 <Text title={starsCount ? t('Спасибо за ваш отзыв!') : title} />
                 <StarRating size={40} onSelect={onSelectStars} selectedStars={starsCount} />
@@ -82,7 +83,11 @@ export const RatingCard = memo((props: RatingCardProps) => {
                         <Drawer isOpen={isModalOpen} onClose={cancelHandler} lazy>
                             <VStack gap="32">
                                 {modalContent}
-                                <Button onClick={acceptHandler} size={ButtonSize.L} fullWidth>
+                                <Button
+                                    onClick={acceptHandler}
+                                    size={ButtonSize.L}
+                                    fullWidth
+                                >
                                     {t('Отправить')}
                                 </Button>
                             </VStack>
@@ -93,10 +98,17 @@ export const RatingCard = memo((props: RatingCardProps) => {
                             <VStack gap="32" max>
                                 {modalContent}
                                 <HStack gap="16" max justify="end">
-                                    <Button onClick={cancelHandler} theme={ButtonTheme.OUTLINE_RED}>
+                                    <Button
+                                        onClick={cancelHandler}
+                                        theme={ButtonTheme.OUTLINE_RED}
+                                        data-testid="RatingCard.Close"
+                                    >
                                         {t('Закрыть')}
                                     </Button>
-                                    <Button onClick={acceptHandler}>
+                                    <Button
+                                        onClick={acceptHandler}
+                                        data-testid="RatingCard.Send"
+                                    >
                                         {t('Отправить')}
                                     </Button>
                                 </HStack>
