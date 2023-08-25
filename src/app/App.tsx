@@ -3,7 +3,9 @@ import React, { Suspense, useEffect } from 'react';
 import { useSelector } from 'react-redux';
 
 import { getUserMounted, initAuthData } from '@/entities/User';
+import { MainLayout } from '@/shared/layouts/MainLayout';
 import { classNames } from '@/shared/lib/classNames/classNames';
+import { ToggleFeatures } from '@/shared/lib/features';
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch';
 import { Navbar } from '@/widgets/Navbar';
 import { PageLoader } from '@/widgets/PageLoader';
@@ -24,15 +26,32 @@ const App = () => {
 	}
 
 	return (
-		<div className={classNames('app', {}, [])}>
-			<Suspense fallback="">
-				<Navbar />
-				<div className="content-page">
-					<Sidebar />
-					{mounted && <AppRouter />}
+		<ToggleFeatures
+			feature="isAppRedesigned"
+			on={
+				<div className={classNames('app_redesigned', {}, [])}>
+					<Suspense fallback="">
+						<MainLayout
+							header={<Navbar />}
+							content={<AppRouter />}
+							sidebar={<Sidebar />}
+							toolbar={<div>21412412412</div>}
+						/>
+					</Suspense>
 				</div>
-			</Suspense>
-		</div>
+			}
+			off={
+				<div className={classNames('app', {}, [])}>
+					<Suspense fallback="">
+						<Navbar />
+						<div className="content-page">
+							<Sidebar />
+							<AppRouter />
+						</div>
+					</Suspense>
+				</div>
+			}
+		/>
 	);
 };
 
