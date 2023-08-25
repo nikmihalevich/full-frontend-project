@@ -646,7 +646,8 @@
       "jsonSettings": {
         "theme": "app_dark_theme",
         "isFirstVisit": true,
-        "settingsPageHasBeenOpen": false
+        "settingsPageHasBeenOpen": false,
+        "isArticlesPageWasOpened": true
       },
       "avatar": "https://t4.ftcdn.net/jpg/05/50/95/87/360_F_550958748_OeGcRonEUNoVhd0wjd9zSEMhLFIGO9Bt.jpg"
     },
@@ -664,7 +665,8 @@
       "jsonSettings": {
         "theme": "app_dark_theme",
         "isFirstVisit": true,
-        "settingsPageHasBeenOpen": false
+        "settingsPageHasBeenOpen": false,
+        "isArticlesPageWasOpened": true
       },
       "avatar": "https://xakep.ru/wp-content/uploads/2018/05/171485/KuroiSH-hacker.jpg"
     },
@@ -682,7 +684,8 @@
       "jsonSettings": {
         "theme": "app_dark_theme",
         "isFirstVisit": true,
-        "settingsPageHasBeenOpen": false
+        "settingsPageHasBeenOpen": false,
+        "isArticlesPageWasOpened": true
       },
       "avatar": "https://xakep.ru/wp-content/uploads/2018/05/171485/KuroiSH-hacker.jpg"
     },
