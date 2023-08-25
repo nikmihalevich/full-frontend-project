@@ -9,9 +9,9 @@ import {
 	ReducersList,
 } from '@/shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch';
-import { Button } from '@/shared/ui/Button';
-import { InputWithCarriage } from '@/shared/ui/InputWithCarriage';
-import { HStack } from '@/shared/ui/Stack';
+import { Button } from '@/shared/ui/deprecated/Button';
+import { InputWithCarriage } from '@/shared/ui/deprecated/InputWithCarriage';
+import { HStack } from '@/shared/ui/deprecated/Stack';
 
 import cls from './AddCommentForm.module.scss';
 import {

@@ -11,8 +11,8 @@ import { classNames } from '@/shared/lib/classNames/classNames';
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch';
 import { useDebounce } from '@/shared/lib/hooks/useDebounce/useDebounce';
 import { SortOrder } from '@/shared/types/sort';
-import { Card } from '@/shared/ui/Card';
-import { InputWithCarriage } from '@/shared/ui/InputWithCarriage';
+import { Card } from '@/shared/ui/deprecated/Card';
+import { InputWithCarriage } from '@/shared/ui/deprecated/InputWithCarriage';
 
 import cls from './ArticlesPageFilters.module.scss';
 import {
