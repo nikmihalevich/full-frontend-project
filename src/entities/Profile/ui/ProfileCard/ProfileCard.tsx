@@ -6,8 +6,8 @@ import { Mods, classNames } from '@/shared/lib/classNames/classNames';
 import { Avatar } from '@/shared/ui/deprecated/Avatar';
 import { InputWithCarriage } from '@/shared/ui/deprecated/InputWithCarriage';
 import { Loader } from '@/shared/ui/deprecated/Loader';
-import { HStack, VStack } from '@/shared/ui/deprecated/Stack';
 import { Text, TextAlign, TextTheme } from '@/shared/ui/deprecated/Text';
+import { HStack, VStack } from '@/shared/ui/redesigned/Stack';
 
 import cls from './ProfileCard.module.scss';
 import { Profile } from '../../model/types/profile';
