@@ -1,4 +1,4 @@
-import { Fragment, ReactNode } from 'react';
+import { Fragment, ReactNode, useMemo } from 'react';
 
 import { Listbox as HListBox } from '@headlessui/react';
 
@@ -19,24 +19,24 @@ const people = [
 	{ id: 5, name: 'Katelyn Rohan', unavailable: false },
 ];
 
-export interface ListBoxItem {
+export interface ListBoxItem<T extends string> {
 	value: string;
 	content: ReactNode;
 	disabled?: boolean;
 }
 
-interface ListBoxProps {
-	items?: ListBoxItem[];
+interface ListBoxProps<T extends string> {
+	items?: ListBoxItem<T>[];
 	className?: string;
-	value?: string;
+	value?: T;
 	defaultValue?: string;
-	onChange: (value: string) => void;
+	onChange: (value: T) => void;
 	readonly?: boolean;
 	direction?: DropdownDirection;
 	label?: string;
 }
 
-export function ListBox(props: ListBoxProps) {
+export function ListBox<T extends string>(props: ListBoxProps<T>) {
 	const {
 		items,
 		className,
@@ -49,6 +49,10 @@ export function ListBox(props: ListBoxProps) {
 	} = props;
 
 	const optionsClasses = [mapDirectionClass[direction], popupCls.menu];
+
+	const selectedItem = useMemo(() => {
+		return items?.find((item) => item.value === value);
+	}, [items, value]);
 
 	return (
 		<HStack gap="4">
@@ -67,7 +71,9 @@ export function ListBox(props: ListBoxProps) {
 					aria-disabled={readonly}
 					className={popupCls.trigger}
 				>
-					<Button disabled={readonly}>{value ?? defaultValue}</Button>
+					<Button variant="filled" disabled={readonly}>
+						{selectedItem?.content ?? defaultValue}
+					</Button>
 				</HListBox.Button>
 				<HListBox.Options
 					className={classNames(cls.options, {}, optionsClasses)}
@@ -86,11 +92,12 @@ export function ListBox(props: ListBoxProps) {
 										{
 											[popupCls.active]: active,
 											[popupCls.disabled]: item.disabled,
+											[popupCls.selected]: selected,
 										},
 										[],
 									)}
 								>
-									{selected && '!!!'}
+									{selected}
 									{item.content}
 								</li>
 							)}
