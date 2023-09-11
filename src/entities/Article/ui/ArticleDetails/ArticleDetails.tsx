@@ -4,25 +4,24 @@ import { useTranslation } from 'react-i18next';
 import { useSelector } from 'react-redux';
 
 import CalendarIcon from '@/shared/assets/icons/calendar-icon.svg';
-import EyeIcon from '@/shared/assets/icons/eye-icon.svg';
+import EyeIcon from '@/shared/assets/icons/eye.svg';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import {
 	DynamicModuleLoader,
 	ReducersList,
 } from '@/shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
-import { ToggleFeatures } from '@/shared/lib/features';
+import { toggleFeatures, ToggleFeatures } from '@/shared/lib/features';
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch';
-import { Avatar as AvatarDeprecated } from '@/shared/ui/deprecated/Avatar';
-import { Icon as IconDeprecated } from '@/shared/ui/deprecated/Icon';
+import { Avatar } from '@/shared/ui/deprecated/Avatar';
+import { Icon } from '@/shared/ui/deprecated/Icon';
 import { Skeleton as SkeletonDeprecated } from '@/shared/ui/deprecated/Skeleton';
 import {
 	Text as TextDeprecated,
 	TextAlign,
 	TextSize,
-	TextTheme,
 } from '@/shared/ui/deprecated/Text';
 import { AppImage } from '@/shared/ui/redesigned/AppImage';
-import { Skeleton } from '@/shared/ui/redesigned/Skeleton';
+import { Skeleton as SkeletonRedesigned } from '@/shared/ui/redesigned/Skeleton';
 import { HStack, VStack } from '@/shared/ui/redesigned/Stack';
 import { Text } from '@/shared/ui/redesigned/Text';
 
@@ -47,15 +46,10 @@ const reducers: ReducersList = {
 
 const Deprecated = () => {
 	const article = useSelector(getArticleDetailsData);
-
 	return (
 		<>
-			<HStack justify="center" max>
-				<AvatarDeprecated
-					size={200}
-					src={article?.img}
-					className={cls.avatar}
-				/>
+			<HStack justify="center" max className={cls.avatarWrapper}>
+				<Avatar size={200} src={article?.img} className={cls.avatar} />
 			</HStack>
 			<VStack gap="4" max data-testid="ArticleDetails.Info">
 				<TextDeprecated
@@ -64,12 +58,12 @@ const Deprecated = () => {
 					text={article?.subtitle}
 					size={TextSize.L}
 				/>
-				<HStack gap="8">
-					<IconDeprecated Svg={EyeIcon} className={cls.icon} />
+				<HStack gap="8" className={cls.articleInfo}>
+					<Icon className={cls.icon} Svg={EyeIcon} />
 					<TextDeprecated text={String(article?.views)} />
 				</HStack>
-				<HStack gap="8">
-					<IconDeprecated Svg={CalendarIcon} className={cls.icon} />
+				<HStack gap="8" className={cls.articleInfo}>
+					<Icon className={cls.icon} Svg={CalendarIcon} />
 					<TextDeprecated text={article?.createdAt} />
 				</HStack>
 			</VStack>
@@ -86,12 +80,40 @@ const Redesigned = () => {
 			<Text title={article?.title} size="l" bold />
 			<Text title={article?.subtitle} />
 			<AppImage
-				fallback={<Skeleton width="100%" height={420} border="16px" />}
+				fallback={
+					<SkeletonRedesigned
+						width="100%"
+						height={420}
+						border="16px"
+					/>
+				}
 				src={article?.img}
 				className={cls.img}
 			/>
 			{article?.blocks.map(renderArticleBlock)}
 		</>
+	);
+};
+
+export const ArticleDetailsSkeleton = () => {
+	const Skeleton = toggleFeatures({
+		name: 'isAppRedesigned',
+		on: () => SkeletonRedesigned,
+		off: () => SkeletonDeprecated,
+	});
+	return (
+		<VStack gap="16" max>
+			<Skeleton
+				className={cls.avatar}
+				width={200}
+				height={200}
+				border="50%"
+			/>
+			<Skeleton className={cls.title} width={300} height={32} />
+			<Skeleton className={cls.skeleton} width={600} height={24} />
+			<Skeleton className={cls.skeleton} width="100%" height={200} />
+			<Skeleton className={cls.skeleton} width="100%" height={200} />
+		</VStack>
 	);
 };
 
@@ -111,42 +133,12 @@ export const ArticleDetails = memo((props: ArticleDetailsProps) => {
 	let content;
 
 	if (isLoading) {
-		content = (
-			<>
-				<SkeletonDeprecated
-					className={cls.avatar}
-					width={200}
-					height={200}
-					border="50%"
-				/>
-				<SkeletonDeprecated
-					className={cls.title}
-					width={300}
-					height={32}
-				/>
-				<SkeletonDeprecated
-					className={cls.skeleton}
-					width={600}
-					height={24}
-				/>
-				<SkeletonDeprecated
-					className={cls.skeleton}
-					width="100%"
-					height={200}
-				/>
-				<SkeletonDeprecated
-					className={cls.skeleton}
-					width="100%"
-					height={200}
-				/>
-			</>
-		);
+		content = <ArticleDetailsSkeleton />;
 	} else if (error) {
 		content = (
 			<TextDeprecated
 				align={TextAlign.CENTER}
 				title={t('Произошла ошибка при загрузке статьи')}
-				theme={TextTheme.ERROR}
 			/>
 		);
 	} else {

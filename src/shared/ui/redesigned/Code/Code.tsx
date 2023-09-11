@@ -31,10 +31,10 @@ export const Code = memo((props: CodeProps) => {
 					<Icon
 						clickable
 						onClick={onCopy}
-						className={cls.copyBtn}
+						className={cls.copyBtnRedesigned}
 						Svg={CopyIconNew}
 					/>
-					<code>{text}</code>
+					<code>{text.trim()}</code>
 				</pre>
 			}
 			off={
