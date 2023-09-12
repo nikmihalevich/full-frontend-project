@@ -3,6 +3,7 @@ import React, { Suspense, useEffect } from 'react';
 import { useSelector } from 'react-redux';
 
 import { getUserMounted, initAuthData } from '@/entities/User';
+import { AppLoaderLayout } from '@/shared/layouts/AppLoaderLayout';
 import { MainLayout } from '@/shared/layouts/MainLayout';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import { ToggleFeatures } from '@/shared/lib/features';
@@ -24,7 +25,20 @@ const App = () => {
 	}, [dispatch, mounted]);
 
 	if (!mounted) {
-		return <PageLoader />;
+		return (
+			<ToggleFeatures
+				feature="isAppRedesigned"
+				on={
+					<div
+						id="app"
+						className={classNames('app_redesigned', {}, [])}
+					>
+						<AppLoaderLayout />
+					</div>
+				}
+				off={<PageLoader />}
+			/>
+		);
 	}
 
 	return (
