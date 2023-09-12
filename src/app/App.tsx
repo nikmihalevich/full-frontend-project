@@ -12,11 +12,13 @@ import { Navbar } from '@/widgets/Navbar';
 import { PageLoader } from '@/widgets/PageLoader';
 import { Sidebar } from '@/widgets/Sidebar';
 
+import { useAppToolbar } from './lib/useAppToolbar';
 import { AppRouter } from './providers/router';
 
 const App = () => {
 	const dispatch = useAppDispatch();
 	const mounted = useSelector(getUserMounted);
+	const toolbar = useAppToolbar();
 
 	useEffect(() => {
 		if (!mounted) {
@@ -51,7 +53,7 @@ const App = () => {
 							header={<Navbar />}
 							content={<AppRouter />}
 							sidebar={<Sidebar />}
-							toolbar={<>&nbsp;</>}
+							toolbar={toolbar}
 						/>
 					</Suspense>
 				</div>
