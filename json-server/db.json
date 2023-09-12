@@ -645,7 +645,8 @@
         "isAppRedesigned": true
       },
       "jsonSettings": {
-        "theme": "app_dark_theme"
+        "theme": "app_dark_theme",
+        "isArticlesPageWasOpened": true
       },
       "avatar": "https://t4.ftcdn.net/jpg/05/50/95/87/360_F_550958748_OeGcRonEUNoVhd0wjd9zSEMhLFIGO9Bt.jpg"
     },
