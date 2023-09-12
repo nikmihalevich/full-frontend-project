@@ -18,8 +18,10 @@ const App = () => {
 	const mounted = useSelector(getUserMounted);
 
 	useEffect(() => {
-		dispatch(initAuthData());
-	}, [dispatch]);
+		if (!mounted) {
+			dispatch(initAuthData());
+		}
+	}, [dispatch, mounted]);
 
 	if (!mounted) {
 		return <PageLoader />;
@@ -35,7 +37,7 @@ const App = () => {
 							header={<Navbar />}
 							content={<AppRouter />}
 							sidebar={<Sidebar />}
-							toolbar={<></>}
+							toolbar={<>&nbsp;</>}
 						/>
 					</Suspense>
 				</div>

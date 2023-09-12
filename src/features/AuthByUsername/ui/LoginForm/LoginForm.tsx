@@ -10,6 +10,7 @@ import {
 } from '@/shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
 import { ToggleFeatures } from '@/shared/lib/features';
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch';
+import { useForceUpdate } from '@/shared/lib/render/forceUpdate';
 import {
 	Button as ButtonDeprecated,
 	ButtonTheme,
@@ -45,6 +46,7 @@ const LoginForm = memo(({ className, onSuccess }: LoginFormProps) => {
 	const password = useSelector(getLoginPassword);
 	const isLoading = useSelector(getLoginIsLoading);
 	const error = useSelector(getLoginError);
+	const forceUpdate = useForceUpdate();
 
 	const onChangeUsername = useCallback(
 		(value: string) => {
@@ -64,8 +66,9 @@ const LoginForm = memo(({ className, onSuccess }: LoginFormProps) => {
 		const result = await dispatch(loginByUsername({ username, password }));
 		if (result.meta.requestStatus === 'fulfilled') {
 			onSuccess();
+			forceUpdate();
 		}
-	}, [dispatch, onSuccess, password, username]);
+	}, [dispatch, forceUpdate, onSuccess, password, username]);
 
 	const onKeyDown = useCallback(
 		async (e: KeyboardEvent) => {
