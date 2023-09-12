@@ -13,14 +13,6 @@ import { Icon } from '../../../Icon';
 import { mapDirectionClass } from '../../styles/consts';
 import popupCls from '../../styles/popup.module.scss';
 
-const people = [
-	{ id: 1, name: 'Durward Reynolds', unavailable: false },
-	{ id: 2, name: 'Kenton Towne', unavailable: false },
-	{ id: 3, name: 'Therese Wunsch', unavailable: false },
-	{ id: 4, name: 'Benedict Kessler', unavailable: true },
-	{ id: 5, name: 'Katelyn Rohan', unavailable: false },
-];
-
 export interface ListBoxItem<T extends string> {
 	value: string;
 	content: ReactNode;
@@ -70,16 +62,12 @@ export function ListBox<T extends string>(props: ListBoxProps<T>) {
 				disabled={readonly}
 			>
 				<HListBox.Button
+					as={Button}
+					variant="filled"
 					aria-disabled={readonly}
-					className={popupCls.trigger}
+					addonRight={<Icon Svg={ArrowButton} />}
 				>
-					<Button
-						variant="filled"
-						disabled={readonly}
-						addonRight={<Icon Svg={ArrowButton} />}
-					>
-						{selectedItem?.content ?? defaultValue}
-					</Button>
+					{selectedItem?.content ?? defaultValue}
 				</HListBox.Button>
 				<HListBox.Options
 					className={classNames(cls.options, {}, optionsClasses)}
