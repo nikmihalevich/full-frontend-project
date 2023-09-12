@@ -8,10 +8,18 @@ import {
 	DynamicModuleLoader,
 	ReducersList,
 } from '@/shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
+import { ToggleFeatures } from '@/shared/lib/features';
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch';
-import { Button, ButtonTheme } from '@/shared/ui/deprecated/Button';
-import { InputWithCarriage } from '@/shared/ui/deprecated/InputWithCarriage';
-import { Text, TextTheme } from '@/shared/ui/deprecated/Text';
+import {
+	Button as ButtonDeprecated,
+	ButtonTheme,
+} from '@/shared/ui/deprecated/Button';
+import { InputWithCarriage as InputDeprecated } from '@/shared/ui/deprecated/InputWithCarriage';
+import { Text as TextDeprecated, TextTheme } from '@/shared/ui/deprecated/Text';
+import { Button } from '@/shared/ui/redesigned/Button';
+import { Input } from '@/shared/ui/redesigned/Input';
+import { VStack } from '@/shared/ui/redesigned/Stack';
+import { Text } from '@/shared/ui/redesigned/Text';
 
 import cls from './LoginForm.module.scss';
 import { getLoginError } from '../../model/selectors/getLoginError/getLoginError';
@@ -78,38 +86,80 @@ const LoginForm = memo(({ className, onSuccess }: LoginFormProps) => {
 
 	return (
 		<DynamicModuleLoader removeAfterUnmount reducers={initialReducers}>
-			<div className={classNames(cls.LoginForm, {}, [className])}>
-				<Text title={t('Форма авторизации')} />
-				{error && (
-					<Text
-						text={t('Вы ввели неверный логин или пароль')}
-						theme={TextTheme.ERROR}
-					/>
-				)}
-				<InputWithCarriage
-					type="text"
-					className={cls.input}
-					placeholder={t('Введите username')}
-					autofocus
-					onChange={onChangeUsername}
-					value={username}
-				/>
-				<InputWithCarriage
-					type="text"
-					className={cls.input}
-					placeholder={t('Введите пароль')}
-					onChange={onChangePassword}
-					value={password}
-				/>
-				<Button
-					theme={ButtonTheme.OUTLINE}
-					className={cls.loginBtn}
-					onClick={onLoginClick}
-					disabled={isLoading}
-				>
-					{t('Войти')}
-				</Button>
-			</div>
+			<ToggleFeatures
+				feature="isAppRedesigned"
+				on={
+					<VStack
+						gap="16"
+						className={classNames(cls.LoginForm, {}, [className])}
+					>
+						<Text title={t('Форма авторизации')} />
+						{error && (
+							<Text
+								text={t('Вы ввели неверный логин или пароль')}
+								variant="error"
+							/>
+						)}
+						<Input
+							type="text"
+							className={cls.input}
+							placeholder={t('Введите username')}
+							autofocus
+							onChange={onChangeUsername}
+							value={username}
+						/>
+						<Input
+							type="text"
+							className={cls.input}
+							placeholder={t('Введите пароль')}
+							onChange={onChangePassword}
+							value={password}
+						/>
+						<Button
+							variant="outline"
+							className={cls.loginBtn}
+							onClick={onLoginClick}
+							disabled={isLoading}
+						>
+							{t('Войти')}
+						</Button>
+					</VStack>
+				}
+				off={
+					<div className={classNames(cls.LoginForm, {}, [className])}>
+						<TextDeprecated title={t('Форма авторизации')} />
+						{error && (
+							<TextDeprecated
+								text={t('Вы ввели неверный логин или пароль')}
+								theme={TextTheme.ERROR}
+							/>
+						)}
+						<InputDeprecated
+							type="text"
+							className={cls.input}
+							placeholder={t('Введите username')}
+							autofocus
+							onChange={onChangeUsername}
+							value={username}
+						/>
+						<InputDeprecated
+							type="text"
+							className={cls.input}
+							placeholder={t('Введите пароль')}
+							onChange={onChangePassword}
+							value={password}
+						/>
+						<ButtonDeprecated
+							theme={ButtonTheme.OUTLINE}
+							className={cls.loginBtn}
+							onClick={onLoginClick}
+							disabled={isLoading}
+						>
+							{t('Войти')}
+						</ButtonDeprecated>
+					</div>
+				}
+			/>
 		</DynamicModuleLoader>
 	);
 });
