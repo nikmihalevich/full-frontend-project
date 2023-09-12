@@ -5,6 +5,7 @@ import { ComponentMeta, ComponentStory } from '@storybook/react';
 import { Country } from '@/entities/Country';
 import { Currency } from '@/entities/Currency';
 import AvatarImg from '@/shared/assets/tests/storybook.jpg';
+import { NewDesignDecorator } from '@/shared/config/storybook/NewDesignDecorator/NewDesignDecorator';
 
 import { ProfileCard } from './ProfileCard';
 
@@ -20,10 +21,10 @@ const Template: ComponentStory<typeof ProfileCard> = (args) => (
 	<ProfileCard {...args} />
 );
 
-export const Primary = Template.bind({});
-Primary.args = {
+const profileArgs = {
 	data: {
 		username: 'admin',
+		firstname: 'user',
 		lastname: 'user',
 		age: 22,
 		country: Country.Russia,
@@ -32,6 +33,13 @@ Primary.args = {
 		avatar: AvatarImg,
 	},
 };
+
+export const Primary = Template.bind({});
+Primary.args = profileArgs;
+
+export const PrimaryRedesigned = Template.bind({});
+PrimaryRedesigned.args = profileArgs;
+PrimaryRedesigned.decorators = [NewDesignDecorator];
 
 export const withError = Template.bind({});
 withError.args = {

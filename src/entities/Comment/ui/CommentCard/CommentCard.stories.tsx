@@ -2,7 +2,7 @@ import React from 'react';
 
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 
-import { StoreDecorator } from '@/shared/config/storybook/StoreDecorator/StoreDecorator';
+import { FeaturesFlagsDecorator } from '@/shared/config/storybook/FeaturesFlagsDecorator/FeaturesFlagsDecorator';
 
 import { CommentCard } from './CommentCard';
 
@@ -18,8 +18,7 @@ const Template: ComponentStory<typeof CommentCard> = (args) => (
 	<CommentCard {...args} />
 );
 
-export const Normal = Template.bind({});
-Normal.args = {
+const normalArgs = {
 	comment: {
 		id: '1',
 		text: 'hello world comment 1',
@@ -29,7 +28,15 @@ Normal.args = {
 		},
 	},
 };
-Normal.decorators = [StoreDecorator({})];
+
+export const Normal = Template.bind({});
+Normal.args = normalArgs;
+
+export const NormalRedesigned = Template.bind({});
+NormalRedesigned.args = normalArgs;
+NormalRedesigned.decorators = [
+	FeaturesFlagsDecorator({ isAppRedesigned: true }),
+];
 
 export const Loading = Template.bind({});
 Loading.args = {
@@ -43,4 +50,3 @@ Loading.args = {
 	},
 	isLoading: true,
 };
-Loading.decorators = [StoreDecorator({})];
